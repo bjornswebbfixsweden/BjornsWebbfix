@@ -47,13 +47,14 @@
             --white: #ffffff;
             --silver: #a9a9a9;
             --glass: rgba(255, 255, 255, 0.05);
-            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --nav-height: 120px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { 
             scroll-behavior: smooth; 
-            overflow-x: hidden; /* Förhindrar sidoskroll på hela sidan */
+            overflow-x: hidden; 
         }
         body { 
             font-family: 'Montserrat', sans-serif; 
@@ -66,21 +67,32 @@
         /* --- NAV --- */
         nav {
             position: fixed; top: 0; width: 100%; 
-            height: 120px; 
+            height: var(--nav-height); 
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 60px; z-index: 1000;
-            background: rgba(5, 5, 5, 0.9);
+            background: rgba(5, 5, 5, 0.85);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            will-change: height, background; /* Optimerar för mobiler */
+        }
+
+        /* Ny klass för skroll-effekt */
+        nav.scrolled {
+            height: 80px;
+            background: rgba(5, 5, 5, 0.98);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
         }
         
         .nav-logo-img {
             height: 80px; 
             width: auto;
             display: block;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
         }
-        .nav-logo-img:hover { transform: scale(1.05); }
+        nav.scrolled .nav-logo-img {
+            height: 50px;
+        }
 
         .nav-links {
             display: flex;
@@ -164,67 +176,49 @@
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- MOBILANPASSNING (FIXAD) --- */
+        /* --- MOBILANPASSNING --- */
         @media (max-width: 1024px) {
             nav { 
                 height: auto; 
-                padding: 20px 15px; 
+                padding: 15px 15px; 
                 flex-direction: column; 
-                position: fixed;
             }
-            .nav-logo-img { height: 50px; margin-bottom: 15px; }
+            nav.scrolled { height: auto; padding: 10px 15px; }
+            .nav-logo-img { height: 50px; margin-bottom: 10px; }
+            nav.scrolled .nav-logo-img { height: 40px; }
             
             .nav-links {
                 width: 100%;
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* Två stora knappar per rad */
-                gap: 10px;
-                padding: 5px 0;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
             }
             .nav-links a { 
                 margin: 0;
-                padding: 15px 5px;
+                padding: 12px 5px;
                 background: rgba(255,255,255,0.05);
                 border: 1px solid rgba(255,255,255,0.1);
                 border-radius: 5px;
                 text-align: center;
-                font-size: 11px; /* Större läsbar text */
+                font-size: 10px;
                 display: block;
-                letter-spacing: 1px;
-            }
-            .nav-links a:active {
-                background: var(--gold);
-                color: var(--dark);
             }
 
             .info-section { 
                 grid-template-columns: 1fr; 
-                padding: 180px 20px 60px 20px; /* Mer padding i topp pga större meny */
+                padding: 180px 20px 60px 20px; 
                 text-align: center;
             }
-            
-            .info-text h2 { word-wrap: break-word; } /* Ser till att långa ord bryts */
-
             .grid-container { grid-template-columns: 1fr; padding: 40px 20px; }
-            
             .split { flex-direction: column; min-height: auto; }
             .split-img { min-height: 300px; width: 100%; }
             .split-text { padding: 40px 20px; text-align: center; }
-
-            .hero-content h1 { margin-top: 60px; }
-        }
-
-        @media (max-width: 480px) {
-            .nav-links { grid-template-columns: 1fr 1fr; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .info-text h2 { font-size: 1.8rem; }
-            .frame { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <nav aria-label="Huvudmeny">
+    <nav id="mainNav">
         <a href="#" aria-label="Till startsidan"><img src="bjornswebbfix.png" alt="Björns Webbfix Logotyp" class="nav-logo-img"></a>
         <div class="nav-links">
             <a href="#services">Design</a>
@@ -321,6 +315,16 @@
     </footer>
 
     <script>
+        // Ny funktion för att krympa menyn vid skroll
+        window.onscroll = function() {
+            const nav = document.getElementById('mainNav');
+            if (window.pageYOffset > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        };
+
         const slides = document.querySelectorAll('.hero-slide');
         let currentSlide = 0;
 
