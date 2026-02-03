@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>BJÖRNS WEBBFIX | Skräddarsydd Webbutveckling & Design</title>
     <meta name="description" content="Björns Webbfix erbjuder exklusiv webbutveckling och modern webbdesign. Vi skapar snabba, responsiva hemsidor med fokus på estetik och prestanda. Est. 2026.">
     <meta name="keywords" content="webbutveckling, webbdesign, hemsida företag, kodning, html5, css3, responsiv design, portfolio">
     <meta name="author" content="Björns Webbfix">
-    <meta name="robots" content="index, follow"> <meta property="og:title" content="BJÖRNS WEBBFIX | Coded Artistry">
+    <meta name="robots" content="index, follow"> 
+    <meta property="og:title" content="BJÖRNS WEBBFIX | Coded Artistry">
     <meta property="og:description" content="Digital estetik skapad med precision. Premium webbutveckling för företag som vill synas.">
-    <meta property="og:image" content="https://bjornswebbfix.se/bilder/share-image.jpg"> <meta property="og:url" content="https://bjornswebbfix.se">
+    <meta property="og:image" content="https://bjornswebbfix.se/share-image.jpg"> 
+    <meta property="og:url" content="https://bjornswebbfix.se">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="sv_SE">
 
@@ -70,7 +73,22 @@
         }
         .nav-logo-img:hover { transform: scale(1.05); }
 
-        .nav-links a { text-decoration: none; color: var(--white); margin-left: 40px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--white); 
+            margin-left: 40px; 
+            font-size: 12px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            transition: 0.3s; 
+            white-space: nowrap;
+        }
         .nav-links a:hover { color: var(--gold); }
 
         /* --- HERO --- */
@@ -96,7 +114,6 @@
         /* --- SEKTIONER --- */
         .info-section { padding: 180px 10%; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
         
-     /* Uppdaterad Bild 1 (Alltid färg + Guld Zoom vid hover) */
         .info-img { 
             position: relative; 
             border: 1px solid rgba(255, 255, 255, 0.05); 
@@ -108,7 +125,7 @@
         .info-img img { 
             width: 100%; 
             display: block; 
-            filter: none; /* Alltid färg */
+            filter: none; 
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); 
         }
         .info-img:hover {
@@ -131,11 +148,11 @@
 
         .split { display: flex; height: 100vh; border-top: 1px solid rgba(255,255,255,0.05); }
         .split-img { flex: 1.4; background-size: cover; background-position: center; filter: brightness(0.5); transition: filter 0.5s ease; }
-        .split-img:hover { filter: brightness(0.7); } /* Liten uppljusning vid hover */
+        .split-img:hover { filter: brightness(0.7); } 
         .split-text { flex: 1; padding: 120px; display: flex; flex-direction: column; justify-content: center; background: #070707; }
         .split:nth-child(even) { flex-direction: row-reverse; }
 
-        .statement-section { padding: 250px 0; background-image: url('bilder/bakgrund.png'); background-attachment: fixed; background-size: cover; background-position: center; }
+        .statement-section { padding: 250px 0; background-image: url('bakgrund.png'); background-attachment: fixed; background-size: cover; background-position: center; }
         .frame { background: var(--dark); border: 1px solid var(--gold); padding: 120px; max-width: 1100px; text-align: center; box-shadow: 0 60px 120px rgba(0,0,0,0.9); margin: 0 auto; }
         .frame h3 { font-size: 3rem; font-weight: 100; letter-spacing: 12px; margin-bottom: 40px; text-transform: uppercase; }
 
@@ -164,9 +181,28 @@
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* --- MOBILANPASSNING --- */
         @media (max-width: 1024px) {
-            nav { height: 90px; padding: 0 30px; }
-            .nav-logo-img { height: 60px; }
+            nav { 
+                height: 100px; 
+                padding: 0 20px; 
+                flex-direction: column; 
+                justify-content: center; 
+                gap: 10px;
+            }
+            .nav-logo-img { height: 45px; }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                gap: 15px;
+            }
+            .nav-links a { 
+                margin-left: 0; 
+                font-size: 9px; 
+                letter-spacing: 1px; 
+            }
+
             .info-section, .grid-container, .split { grid-template-columns: 1fr; flex-direction: column; height: auto; padding: 80px 5%; }
             .split-img { height: 450px; }
             .split-text { padding: 60px 30px; }
@@ -174,12 +210,18 @@
             .contact-details { flex-direction: column; gap: 30px; align-items: center; }
             .frame { padding: 60px 20px; width: 90%; }
         }
+
+        /* Extra liten skärm */
+        @media (max-width: 480px) {
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 8px; letter-spacing: 0.5px; }
+        }
     </style>
 </head>
 <body>
 
    <nav aria-label="Huvudmeny">
-        <a href="#" aria-label="Till startsidan"><img src="bilder/bjornswebbfix.png" alt="Björns Webbfix Logotyp" class="nav-logo-img"></a>
+        <a href="#" aria-label="Till startsidan"><img src="logo.png" alt="Björns Webbfix Logotyp" class="nav-logo-img"></a>
         <div class="nav-links">
             <a href="#services">Design</a>
             <a href="#about">Idé</a>
@@ -190,9 +232,9 @@
 
     <header class="hero">
         <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('bilder/hero2.png');" role="img" aria-label="Bakgrundsbild webbdesign"></div>
-            <div class="hero-slide" style="background-image: url('bilder/hero1.png');" role="img" aria-label="Abstrakt kodkonst"></div>
-            <div class="hero-slide" style="background-image: url('bilder/hero3.png');" role="img" aria-label="Minimalistisk design"></div>
+            <div class="hero-slide active" style="background-image: url('hero2.png');" role="img" aria-label="Bakgrundsbild webbdesign"></div>
+            <div class="hero-slide" style="background-image: url('hero1.png');" role="img" aria-label="Abstrakt kodkonst"></div>
+            <div class="hero-slide" style="background-image: url('hero3.png');" role="img" aria-label="Minimalistisk design"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -202,7 +244,7 @@
     </header>
 
     <section id="about" class="info-section reveal">
-        <div class="info-img"><img src="bilder/bild1.png" alt="Modern och responsiv webbdesign på skärm" loading="lazy"></div>
+        <div class="info-img"><img src="bild1.png" alt="Modern och responsiv webbdesign på skärm" loading="lazy"></div>
         <div class="info-text">
             <h2>Morgondagens digitala närvaro</h2>
             <p>Digital närvaro handlar om mer än bara synlighet – det handlar om känsla. Genom ett fokus på detaljer, prestanda och användarvänlighet skapas en digital närvaro med en stil som gör avtryck.</p>
@@ -229,7 +271,7 @@
     </section>
 
     <div class="split reveal">
-        <div class="split-img" style="background-image: url('bilder/bild2.png');" role="img" aria-label="Minimalistisk arbetsyta"></div>        
+        <div class="split-img" style="background-image: url('bild2.png');" role="img" aria-label="Minimalistisk arbetsyta"></div>        
         <div class="split-text">
             <h2 style="color: var(--gold);">Minimalism möter precision</h2>
             <p>Begreppet 'less is more' tas här till sin spets. När varje rad kod har en specifik funktion, uppstår en ren och ostörd kommunikation mellan ert företag och era besökare.</p>
@@ -237,7 +279,7 @@
     </div>
 
     <div class="split reveal">
-        <div class="split-img" style="background-image: url('bilder/bild3.png');" role="img" aria-label="Juridik och avtal"></div>
+        <div class="split-img" style="background-image: url('bild3.png');" role="img" aria-label="Juridik och avtal"></div>
         <div class="split-text">
             <h2>Kontrakt utan finstilt</h2>
             <p>Här ersätts invecklad juridik med begripliga överenskommelser. Fokus ligger på att leverera enligt överenskommelse, inom utsatt tid och till avtalat pris.</p>
@@ -265,22 +307,25 @@
             <button type="submit" class="submit-btn">Skicka förfrågan</button>
         </form>
     </section>
-<footer id="social-links"> <img src="bilder/bjornswebbfix.png" alt="Björns Webbfix Logotyp" class="footer-logo">
-    <p style="font-weight: 300; color: #444; font-size: 0.9rem; letter-spacing: 4px;">CODED ARTISTRY & WEB DEVELOPMENT</p>
+
+    <footer id="social-links"> 
+        <img src="logo.png" alt="Björns Webbfix Logotyp" class="footer-logo">
+        <p style="font-weight: 300; color: #444; font-size: 0.9rem; letter-spacing: 4px;">CODED ARTISTRY & WEB DEVELOPMENT</p>
         <div class="contact-details">
-        <a href="https://www.instagram.com/bjornswebbfix" target="_blank" rel="noopener" class="contact-item" aria-label="Besök oss på Instagram">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i> bjornswebbfix
-        </a>
-       <a href="mailto:bjornswebbfix@gmail.com" class="contact-item" aria-label="Skicka e-post till oss">
-            <i class="fas fa-envelope" aria-hidden="true"></i> bjornswebbfix@gmail.com
-        </a>
-       <a href="https://www.facebook.com/profile.php?id=61587249578615" target="_blank" rel="noopener" class="contact-item" aria-label="Besök oss på Facebook">
-            <i class="fa-brands fa-facebook" aria-hidden="true"></i> Björns Webbfix
-        </a>
-    </div>
- <p style="margin-top: 80px; color: #222; font-size: 0.7rem; letter-spacing: 2px;">&copy; 2026 BJÖRNS WEBBFIX. ALL RIGHTS RESERVED.</p>
-</footer>
-<script>
+            <a href="https://www.instagram.com/bjornswebbfix" target="_blank" rel="noopener" class="contact-item" aria-label="Besök oss på Instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i> bjornswebbfix
+            </a>
+            <a href="mailto:bjornswebbfix@gmail.com" class="contact-item" aria-label="Skicka e-post till oss">
+                <i class="fas fa-envelope" aria-hidden="true"></i> bjornswebbfix@gmail.com
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61587249578615" target="_blank" rel="noopener" class="contact-item" aria-label="Besök oss på Facebook">
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i> Björns Webbfix
+            </a>
+        </div>
+        <p style="margin-top: 80px; color: #222; font-size: 0.7rem; letter-spacing: 2px;">&copy; 2026 BJÖRNS WEBBFIX. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
         const slides = document.querySelectorAll('.hero-slide');
         let currentSlide = 0;
 
@@ -306,7 +351,4 @@
         reveal();
     </script>
 </body>
-
 </html>
-
-
