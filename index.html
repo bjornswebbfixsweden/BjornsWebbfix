@@ -165,7 +165,22 @@
             text-align: left;
         }
 
-        .submit-btn { background: var(--gold); color: var(--dark); border: none; padding: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; width: 100%; }
+        .submit-btn { 
+            background: var(--gold); 
+            color: var(--dark); 
+            border: none; 
+            padding: 18px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            cursor: pointer; 
+            width: 100%; 
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { background: #fff; }
 
         /* --- INTEGRITETSPOLICY SEKTION --- */
         .policy-section { padding: 80px 10%; background: #070707; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -269,7 +284,7 @@
         <div class="info-img"><img src="bild1.png" alt="Modern och responsiv webbdesign" loading="lazy"></div>
         <div class="info-text">
             <h2>Morgondagens digitala närvaro</h2>
-            <p>Digital närvaro handlar om mer än bara synlighet – det handlar även om fingertoppskänsla. Björns Webbfix skapar lösningar med fokus på integritet (gdpr), detaljer, prestanda och en stil som gör avtryck.</p>
+            <p>Digital närvaro handlar om mer än bara synlighet – det handlar om känsla. Björns Webbfix skapar lösningar med fokus på detaljer, prestanda och en stil som gör avtryck.</p>
             <p style="color: var(--gold); letter-spacing: 2px; font-weight: 600; font-size: 0.9rem;">PRESTANDA & ELEGANS</p>
         </div>
     </section>
@@ -318,7 +333,20 @@
     </section>
 
     <section id="contact" class="contact-container reveal">
-        <h2 style="text-align: center; font-weight: 100; letter-spacing: 10px; margin-bottom: 40px; text-transform: uppercase;">Kontakt</h2>
+        <h2 style="text-align: center; font-weight: 100; letter-spacing: 10px; margin-bottom: 40px; text-transform: uppercase;">Bokning & Kontakt</h2>
+        
+        <div style="margin-bottom: 50px; padding: 40px; border: 1px solid var(--gold); background: rgba(197, 160, 89, 0.05); text-align: center;">
+            <h3 style="letter-spacing: 3px; margin-bottom: 15px; font-weight: 300;">HITTAT EN TID SOM PASSAR?</h3>
+            <p style="color: #888; margin-bottom: 30px; font-size: 0.9rem; letter-spacing: 1px;">Slipp vänta på svar – boka in din biltvätt eller konsultation direkt i vårt schema.</p>
+            
+            <script id="setmore_script" type="text/javascript" src="https://assets.setmore.com/integration/static/setmoreIframeLive.js"></script>
+            <a id="Setmore_button_iframe" class="submit-btn" href="https://bjornswebbfix.setmore.com">
+                ÖPPNA BOKNINGSKALENDERN
+            </a>
+        </div>
+
+        <p style="text-align: center; color: #555; margin-bottom: 30px; letter-spacing: 2px; font-size: 0.8rem;">ELLER SKICKA ETT MEDDELANDE</p>
+
         <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
             <input type="hidden" name="access_key" value="2b9802f1-0384-4f60-bff3-3920fe37d88e">
             <input type="text" name="name" placeholder="NAMN" required>
@@ -338,7 +366,8 @@
             <h2>Integritetspolicy</h2>
             <p style="margin-bottom: 20px;">Björns Webbfix värnar om din integritet. Här är en kort sammanfattning om hur din data hanteras:</p>
             <ul class="policy-list">
-                <li><strong>Ändamål:</strong> Vi samlar in namn och e-post enbart för att kunna svara på dina förfrågningar.</li>
+                <li><strong>Ändamål:</strong> Vi samlar in namn och e-post enbart för att kunna svara på dina förfrågningar eller administrera bokningar.</li>
+                <li><strong>Bokningar:</strong> Vi använder Setmore för tidsbokning. Din data hanteras enligt deras säkerhetsrutiner för bokningsadministration.</li>
                 <li><strong>Tredjepart:</strong> Vi använder Web3Forms för att tekniskt leverera ditt meddelande till vår e-post. Ingen data säljs vidare.</li>
                 <li><strong>Lagring:</strong> Vi sparar din korrespondens så länge det krävs för att fullfölja vårt samarbete eller tills du ber oss radera den.</li>
                 <li><strong>Dina rättigheter:</strong> Du har när som helst rätt att begära utdrag eller radering av dina uppgifter genom att kontakta oss.</li>
@@ -384,4 +413,3 @@
     </script>
 </body>
 </html>
-
