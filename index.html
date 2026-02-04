@@ -53,7 +53,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { 
             scroll-behavior: smooth; 
-            overflow-x: hidden; /* Förhindrar sidoskroll på hela sidan */
+            overflow-x: hidden; 
         }
         body { 
             font-family: 'Montserrat', sans-serif; 
@@ -148,6 +148,7 @@
         .frame { background: var(--dark); border: 1px solid var(--gold); padding: 80px 40px; max-width: 90%; text-align: center; margin: 0 auto; }
         .frame h3 { font-size: clamp(1.5rem, 5vw, 3rem); font-weight: 100; letter-spacing: 8px; margin-bottom: 30px; text-transform: uppercase; }
 
+        /* --- KONTAKT & GDPR TEXT --- */
         .contact-container { padding: 100px 5%; max-width: 900px; margin: 0 auto; }
         .contact-form { background: #0a0a0a; padding: 40px; border: 1px solid rgba(255,255,255,0.05); }
         .contact-form input, .contact-form textarea {
@@ -155,7 +156,24 @@
             background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1);
             color: white; font-family: 'Montserrat'; outline: none;
         }
+        
+        .gdpr-info-text { 
+            font-size: 0.75rem; 
+            color: #666; 
+            line-height: 1.4; 
+            margin-bottom: 20px; 
+            text-align: left;
+        }
+
         .submit-btn { background: var(--gold); color: var(--dark); border: none; padding: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; width: 100%; }
+
+        /* --- INTEGRITETSPOLICY SEKTION --- */
+        .policy-section { padding: 80px 10%; background: #070707; border-top: 1px solid rgba(255,255,255,0.05); }
+        .policy-content { max-width: 800px; margin: 0 auto; color: #888; font-size: 0.9rem; line-height: 1.8; }
+        .policy-content h2 { color: var(--gold); font-size: 1.2rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .policy-list { list-style: none; margin-bottom: 20px; }
+        .policy-list li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .policy-list li::before { content: '•'; color: var(--gold); position: absolute; left: 0; }
 
         footer { padding: 80px 20px; text-align: center; background: #030303; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-logo { height: 60px; width: auto; margin-bottom: 30px; }
@@ -164,7 +182,7 @@
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- MOBILANPASSNING (FIXAD) --- */
+        /* --- MOBILANPASSNING --- */
         @media (max-width: 1024px) {
             nav { 
                 height: auto; 
@@ -177,7 +195,7 @@
             .nav-links {
                 width: 100%;
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* Två stora knappar per rad */
+                grid-template-columns: 1fr 1fr; 
                 gap: 10px;
                 padding: 5px 0;
             }
@@ -188,7 +206,7 @@
                 border: 1px solid rgba(255,255,255,0.1);
                 border-radius: 5px;
                 text-align: center;
-                font-size: 11px; /* Större läsbar text */
+                font-size: 11px; 
                 display: block;
                 letter-spacing: 1px;
             }
@@ -199,11 +217,11 @@
 
             .info-section { 
                 grid-template-columns: 1fr; 
-                padding: 180px 20px 60px 20px; /* Mer padding i topp pga större meny */
+                padding: 180px 20px 60px 20px; 
                 text-align: center;
             }
             
-            .info-text h2 { word-wrap: break-word; } /* Ser till att långa ord bryts */
+            .info-text h2 { word-wrap: break-word; } 
 
             .grid-container { grid-template-columns: 1fr; padding: 40px 20px; }
             
@@ -229,7 +247,7 @@
         <div class="nav-links">
             <a href="#services">Design</a>
             <a href="#about">Idé</a>
-            <a href="#social-links">Socialt</a> 
+            <a href="#privacy">Integritet</a> 
             <a href="#contact">Kontakt</a>
         </div>
     </nav>
@@ -306,8 +324,27 @@
             <input type="text" name="name" placeholder="NAMN" required>
             <input type="email" name="email" placeholder="E-POST" required>
             <textarea name="message" rows="5" placeholder="BERÄTTA OM DINA TANKAR" required></textarea>
+            
+            <p class="gdpr-info-text">
+                När du skickar ett meddelande via detta formulär behandlas dina personuppgifter av Björns Webbfix för att kunna besvara ditt ärende. Din data skickas via tjänsten Web3Forms direkt till Björns Webbfixs e-post som enbart sparar de uppgifter som krävs för att hjälpa dig.
+            </p>
+
             <button type="submit" class="submit-btn">Skicka förfrågan</button>
         </form>
+    </section>
+
+    <section id="privacy" class="policy-section reveal">
+        <div class="policy-content">
+            <h2>Integritetspolicy</h2>
+            <p style="margin-bottom: 20px;">Björns Webbfix värnar om din integritet. Här är en kort sammanfattning om hur din data hanteras:</p>
+            <ul class="policy-list">
+                <li><strong>Ändamål:</strong> Vi samlar in namn och e-post enbart för att kunna svara på dina förfrågningar.</li>
+                <li><strong>Tredjepart:</strong> Vi använder Web3Forms för att tekniskt leverera ditt meddelande till vår e-post. Ingen data säljs vidare.</li>
+                <li><strong>Lagring:</strong> Vi sparar din korrespondens så länge det krävs för att fullfölja vårt samarbete eller tills du ber oss radera den.</li>
+                <li><strong>Dina rättigheter:</strong> Du har när som helst rätt att begära utdrag eller radering av dina uppgifter genom att kontakta oss.</li>
+            </ul>
+            <p>Ansvarig för personuppgifter: Björns Webbfix (bjornswebbfix@gmail.com).</p>
+        </div>
     </section>
 
     <footer id="social-links"> 
@@ -317,7 +354,7 @@
             <a href="mailto:bjornswebbfix@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> E-post</a>
             <a href="https://www.facebook.com/profile.php?id=61587249578615" target="_blank" class="contact-item"><i class="fa-brands fa-facebook"></i> Facebook</a>
         </div>
-        <p style="margin-top: 60px; color: #444; font-size: 0.7rem;">&copy; 2026 BJÖRNS WEBBFIX</p>
+        <p style="margin-top: 60px; color: #444; font-size: 0.7rem;">&copy; 2026 BJÖRNS WEBBFIX | <a href="#privacy" style="color: #444; text-decoration: none;">Integritetspolicy</a></p>
     </footer>
 
     <script>
@@ -347,4 +384,3 @@
     </script>
 </body>
 </html>
-
