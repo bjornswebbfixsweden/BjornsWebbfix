@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>BJÖRNS WEBBFIX | Webbutveckling & Design</title>
-    <meta name="description" content="Björns Webbfix erbjuder exklusiv webbutveckling och modern webbdesign. Björns Webbfix skapar snabba, responsiva hemsidor med fokus på estetik och prestanda. Utgår från Göteborg men tar emot kunder från hela Sverige! Est. 2026.">
-    <meta name="keywords" content="webbutveckling, webbdesign, hemsida företag, kodning, html5, css3, responsiv design, portfolio">
+    <title>Björns Webbfix | Professionell Webbdesign i Göteborg & Omnejd</title>
+    <meta name="description" content="Björns Webbfix erbjuder exklusiv webbutveckling och modern webbdesign. Här skapas snabba, responsiva hemsidor med fokus på estetik och prestanda. Utgår från Göteborg men tar emot kunder från hela Sverige! Est. 2026.">
+    <meta name="keywords" content="webbutveckling, webbdesign, hemsida företag, kodning, html5, css3, responsiv design, portfolio, webbfix göteborg">
     <meta name="author" content="Björns Webbfix">
     <meta name="robots" content="index, follow"> 
     <meta property="og:title" content="BJÖRNS WEBBFIX | Coded Artistry">
@@ -22,9 +22,10 @@
       "@type": "ProfessionalService",
       "name": "Björns Webbfix",
       "image": "https://bjornswebbfix.se/bjornswebbfix.png",
-      "description": "Exklusiv webbutveckling och design med fokus på prestanda och estetik.",
+      "description": "Exklusiv webbutveckling och design med fokus på prestanda och estetik i Göteborg.",
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Göteborg",
         "addressCountry": "SE"
       },
       "priceRange": "$$",
@@ -195,63 +196,51 @@
         .contact-details { margin-top: 40px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
         .contact-item { display: flex; align-items: center; gap: 10px; color: #888; text-decoration: none; font-size: 0.9rem; }
 
+        /* --- TVINGANDE COOKIE WALL (UPPDATERAD) --- */
+        #cookie-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(5, 5, 5, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #cookie-bot {
+            display: none; 
+            position: fixed; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 90%; 
+            max-width: 500px; 
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #0a0a0a; 
+            border: 1px solid var(--gold); 
+            padding: 50px 40px; 
+            z-index: 10000; 
+            text-align: center;
+            box-shadow: 0 0 100px rgba(197, 160, 89, 0.1);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #cookie-bot h4 { color: var(--white); }
+        #cookie-bot p { color: #888; }
+
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- MOBILANPASSNING --- */
         @media (max-width: 1024px) {
-            nav { 
-                height: auto; 
-                padding: 20px 15px; 
-                flex-direction: column; 
-                position: fixed;
-            }
+            nav { height: auto; padding: 20px 15px; flex-direction: column; position: fixed; }
             .nav-logo-img { height: 50px; margin-bottom: 15px; }
-            
-            .nav-links {
-                width: 100%;
-                display: grid;
-                grid-template-columns: 1fr 1fr; 
-                gap: 10px;
-                padding: 5px 0;
-            }
-            .nav-links a { 
-                margin: 0;
-                padding: 15px 5px;
-                background: rgba(255,255,255,0.05);
-                border: 1px solid rgba(255,255,255,0.1);
-                border-radius: 5px;
-                text-align: center;
-                font-size: 11px; 
-                display: block;
-                letter-spacing: 1px;
-            }
-            .nav-links a:active {
-                background: var(--gold);
-                color: var(--dark);
-            }
-
-            .info-section { 
-                grid-template-columns: 1fr; 
-                padding: 180px 20px 60px 20px; 
-                text-align: center;
-            }
-            
-            .info-text h2 { word-wrap: break-word; } 
-
-            .grid-container { grid-template-columns: 1fr; padding: 40px 20px; }
-            
-            .split { flex-direction: column; min-height: auto; }
-            .split-img { min-height: 300px; width: 100%; }
-            .split-text { padding: 40px 20px; text-align: center; }
-
+            .nav-links { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 5px 0; }
+            .nav-links a { margin: 0; padding: 15px 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 5px; text-align: center; font-size: 11px; display: block; letter-spacing: 1px; }
+            .info-section { grid-template-columns: 1fr; padding: 180px 20px 60px 20px; text-align: center; }
             .hero-content h1 { margin-top: 60px; }
-        }
-
-        @media (max-width: 480px) {
-            .nav-links { grid-template-columns: 1fr 1fr; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .info-text h2 { font-size: 1.8rem; }
-            .frame { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -281,11 +270,11 @@
     </header>
 
     <section id="about" class="info-section reveal">
-        <div class="info-img"><img src="bild1.png" alt="Modern och responsiv webbdesign" loading="lazy"></div>
+        <div class="info-img"><img src="bild1.png" alt="Modern och responsiv webbfix i Göteborg" loading="lazy"></div>
         <div class="info-text">
-            <h2>Morgondagens digitala närvaro</h2>
-            <p>Digital närvaro handlar om mer än bara synlighet – det handlar om känsla. Björns Webbfix skapar lösningar med fokus på detaljer, prestanda och en stil som gör avtryck.</p>
-            <p style="color: var(--gold); letter-spacing: 2px; font-weight: 600; font-size: 0.9rem;">PRESTANDA & ELEGANS</p>
+            <h2>Webbfix i Göteborg – med fokus på estetik</h2>
+            <p>Söks en professionell <strong>webbfix i Göteborg</strong>? Här skapas digitala lösningar där prestanda möter elegans. Björns Webbfix bistår lokala företag i arbetet med att synas genom moderna, snabba och responsiva hemsidor.</p>
+            <p style="color: var(--gold); letter-spacing: 2px; font-weight: 600; font-size: 0.9rem;">EN LOKAL PARTNER I GÖTEBORG</p>
         </div>
     </section>
 
@@ -293,7 +282,7 @@
         <div class="card reveal">
             <i class="fas fa-gem" aria-hidden="true"></i>
             <h3>Premium Design</h3>
-            <p>Layouter som stärker ditt varumärkes trovärdighet.</p>
+            <p>Layouter som stärker varumärkets trovärdighet på marknaden.</p>
         </div>
         <div class="card reveal">
             <i class="fas fa-bolt" aria-hidden="true"></i>
@@ -303,7 +292,7 @@
         <div class="card reveal">
             <i class="fas fa-layer-group" aria-hidden="true"></i>
             <h3>Responsivitet</h3>
-            <p>Anpassad för mobil såväl som surflatta och datorskärm.</p>
+            <p>Anpassning för mobiler, surfplattor och datorskärmar.</p>
         </div>
     </section>
 
@@ -311,7 +300,7 @@
         <div class="split-img" style="background-image: url('bild2.png');" role="img" aria-label="Arbetsyta"></div>        
         <div class="split-text">
             <h2 style="color: var(--gold);">Minimalism & Precision</h2>
-            <p>När man håller koden lätt uppstår en lätt kommunikation mellan dig och dina besökare.</p>
+            <p>Genom att hålla koden lätt och ren underlättas kommunikationen mellan varumärket och dess besökare.</p>
         </div>
     </div>
 
@@ -319,16 +308,15 @@
         <div class="split-img" style="background-image: url('bild3.png');" role="img" aria-label="Juridik"></div>
         <div class="split-text">
             <h2>Enkla avtal</h2>
-            <p>Här ersätts krånglig juridik med begripliga överenskommelser. Fokus ligger på leverans och kvalitet.</p>
+            <p>Här ersätts komplicerad juridik med begripliga överenskommelser. Fokus ligger på leverans och kvalitet.</p>
         </div>
     </div>
 
     <section class="statement-section reveal">
         <div class="frame">
             <h3>Digital Kvalitet</h3>
-            <p style="color: #888; font-weight: 300; line-height: 1.6;">Björns webbfix fixar både det visuella och det praktiska.</p>
+            <p style="color: #888; font-weight: 300; line-height: 1.6;">Både det visuella och det praktiska hanteras med noggrannhet.</p>
             <div style="width: 40px; height: 1px; background: var(--gold); margin: 30px auto;"></div>
-            <p style="font-size: 0.8rem; letter-spacing: 4px; color: var(--gold);"></p>
         </div>
     </section>
 
@@ -337,27 +325,25 @@
         
         <div style="margin-bottom: 50px; padding: 40px; border: 1px solid var(--gold); background: rgba(197, 160, 89, 0.05); text-align: center;">
             <p style="color: var(--gold); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; font-weight: 600;">
-                OBS: Detta är ett exempel på hur ett bokningssystem kan se ut
+                OBS: Exempel på bokningssystem
             </p>
-            <h3 style="letter-spacing: 3px; margin-bottom: 15px; font-weight: 300;">HITTAT EN TID SOM PASSAR?</h3>
-            <p style="color: #888; margin-bottom: 30px; font-size: 0.9rem; letter-spacing: 1px;">Slipp vänta på svar – boka in en konsultation eller projektgenomgång direkt i vårt schema.</p>
+            <h3 style="letter-spacing: 3px; margin-bottom: 15px; font-weight: 300;">HITTAT EN PASSANDE TID?</h3>
+            <p style="color: #888; margin-bottom: 30px; font-size: 0.9rem; letter-spacing: 1px;">Konsultationer eller projektgenomgångar kan bokas direkt i schemat för att underlätta planeringen.</p>
             
             <script id="setmore_script" type="text/javascript" src="https://assets.setmore.com/integration/static/setmoreIframeLive.js"></script>
-            <a id="Setmore_button_iframe" class="submit-btn" href="https://bjornswebbfix.setmore.com">
-                ÖPPNA BOKNINGSKALENDERN (DEMO)
-            </a>
+            <a id="Setmore_button_iframe" class="submit-btn" href="https://bjornswebbfix.setmore.com">ÖPPNA BOKNINGSKALENDERN (DEMO)</a>
         </div>
 
-        <p style="text-align: center; color: #555; margin-bottom: 30px; letter-spacing: 2px; font-size: 0.8rem;">ELLER SKICKA ETT MEDDELANDE</p>
+        <p style="text-align: center; color: #555; margin-bottom: 30px; letter-spacing: 2px; font-size: 0.8rem;">MEDDELANDEFÖRRÅGAN</p>
 
         <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
             <input type="hidden" name="access_key" value="2b9802f1-0384-4f60-bff3-3920fe37d88e">
             <input type="text" name="name" placeholder="NAMN" required>
             <input type="email" name="email" placeholder="E-POST" required>
-            <textarea name="message" rows="5" placeholder="BERÄTTA OM DINA TANKAR" required></textarea>
+            <textarea name="message" rows="5" placeholder="BESKRIVNING AV TANKAR ELLER PROJEKT" required></textarea>
             
             <p class="gdpr-info-text">
-                När du skickar ett meddelande via detta formulär behandlas dina personuppgifter av Björns Webbfix för att kunna besvara ditt ärende. Din data skickas via tjänsten Web3Forms direkt till Björns Webbfixs e-post som enbart sparar de uppgifter som krävs för att hjälpa dig.
+                Vid sändning av meddelande behandlas personuppgifter av Björns Webbfix för att kunna besvara ärendet. Data skickas via tjänsten Web3Forms direkt till den e-post som hanterar kundärenden. Endast uppgifter som krävs för att assistera i ärendet sparas.
             </p>
 
             <button type="submit" class="submit-btn">Skicka förfrågan</button>
@@ -367,13 +353,13 @@
     <section id="privacy" class="policy-section reveal">
         <div class="policy-content">
             <h2>Integritetspolicy</h2>
-            <p style="margin-bottom: 20px;">Björns Webbfix värnar om din integritet. Här är en kort sammanfattning om hur din data hanteras:</p>
+            <p style="margin-bottom: 20px;">Här följer information om hur digital data hanteras:</p>
             <ul class="policy-list">
-                <li><strong>Ändamål:</strong> Björns Webbfix samlar in namn och e-post enbart för att kunna svara på dina förfrågningar eller administrera bokningar.</li>
-                <li><strong>Bokningar:</strong> Björns Webbfix använder Setmore för tidsbokning. Din data hanteras enligt deras säkerhetsrutiner för bokningsadministration.</li>
-                <li><strong>Tredjepart:</strong> Björns Webbfix använder Web3Forms för att tekniskt leverera ditt meddelande till vår e-post. Ingen data säljs vidare.</li>
-                <li><strong>Lagring:</strong> Björns Webbfix sparar din korrespondens så länge det krävs för att fullfölja vårt samarbete eller tills du ber om att få det borttaget.</li>
-                <li><strong>Dina rättigheter:</strong> Du har när som helst rätt att begära utdrag eller radering av dina uppgifter genom att kontakta Björns Webbfix.</li>
+                <li><strong>Ändamål:</strong> Namn och e-post samlas in uteslutande för att besvara förfrågningar eller administrera bokningar.</li>
+                <li><strong>Analys:</strong> Google Analytics används i anonymiserad form för att förstå besöksflöden och förbättra användarupplevelsen.</li>
+                <li><strong>Bokningar:</strong> Tidsbokning sker via Setmore enligt gällande säkerhetsrutiner.</li>
+                <li><strong>Tredjepart:</strong> Web3Forms används för teknisk leverans av meddelanden. Ingen data säljs vidare till tredje part.</li>
+                <li><strong>Lagring:</strong> Korrespondens sparas så länge det krävs för att fullfölja samarbetet eller tills begäran om radering inkommer.</li>
             </ul>
             <p>Ansvarig för personuppgifter: Björns Webbfix (bjornswebbfix@gmail.com).</p>
         </div>
@@ -386,21 +372,39 @@
             <a href="mailto:bjornswebbfix@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> E-post</a>
             <a href="https://www.facebook.com/profile.php?id=61587249578615" target="_blank" class="contact-item"><i class="fa-brands fa-facebook"></i> Facebook</a>
         </div>
-        <p style="margin-top: 60px; color: #444; font-size: 0.7rem;">&copy; 2026 BJÖRNS WEBBFIX | <a href="#privacy" style="color: #444; text-decoration: none;">Integritetspolicy</a></p>
+        <div class="footer-content" style="margin-top: 40px;">
+            <p style="color: #444; font-size: 0.8rem;">&copy; 2026 Björns Webbfix. Alla rättigheter förbehållna.</p>
+            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px; color: #666;">
+                Verksamhet inom webbutveckling i <strong>Göteborg, Mölndal, Partille, Mölnlycke, Kungälv, Kungsbacka, Lerum och Borås</strong>.
+            </p>
+        </div>
     </footer>
 
+    <div id="cookie-overlay"></div>
+    <div id="cookie-bot">
+        <i class="fas fa-cookie-bite" style="color: var(--gold); font-size: 2.5rem; margin-bottom: 20px;"></i>
+        <h4 style="letter-spacing: 4px; margin-bottom: 15px; font-size: 1.1rem; text-transform: uppercase;">Digital estetik & cookies</h4>
+        <p style="font-size: 0.85rem; color: #888; line-height: 1.8; margin-bottom: 30px;">
+            Denna webbplats använder cookies för trafikanalys och optimering av användarupplevelsen. Genom att acceptera tillåts insamling av anonymiserad data för att förbättra den digitala närvaron.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+            <button onclick="acceptCookies()" style="background: var(--gold); color: var(--dark); border: none; padding: 15px 40px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; width: 100%;">Acceptera cookies</button>
+            <button onclick="closeCookieBot()" style="background: transparent; color: #555; border: 1px solid #222; padding: 10px 30px; font-weight: 400; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">Endast nödvändiga</button>
+        </div>
+    </div>
+
     <script>
+        // --- HERO SLIDER ---
         const slides = document.querySelectorAll('.hero-slide');
         let currentSlide = 0;
-
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-
         setInterval(nextSlide, 6000);
 
+        // --- SCROLL REVEAL ---
         function reveal() {
             const reveals = document.querySelectorAll(".reveal");
             reveals.forEach(el => {
@@ -413,6 +417,43 @@
         }
         window.addEventListener("scroll", reveal);
         reveal();
+
+        // --- COOKIE WALL LOGIK (UPPDATERAD) ---
+        function acceptCookies() {
+            localStorage.setItem('bjornsWebbfix_cookies', 'accepted');
+            hideCookieWall();
+        }
+
+        function closeCookieBot() {
+            localStorage.setItem('bjornsWebbfix_cookies', 'declined');
+            hideCookieWall();
+        }
+
+        function hideCookieWall() {
+            const bot = document.getElementById('cookie-bot');
+            const overlay = document.getElementById('cookie-overlay');
+            bot.style.opacity = '0';
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                bot.style.display = 'none';
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 500);
+        }
+
+        window.onload = function() {
+            if (!localStorage.getItem('bjornsWebbfix_cookies')) {
+                const bot = document.getElementById('cookie-bot');
+                const overlay = document.getElementById('cookie-overlay');
+                bot.style.display = 'block';
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    bot.style.opacity = '1';
+                    overlay.style.opacity = '1';
+                }, 10);
+            }
+        };
     </script>
 </body>
 </html>
