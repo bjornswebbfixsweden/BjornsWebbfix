@@ -5,8 +5,14 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      
+      // Standardläge: Blockera spårning tills användaren godkänt
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied'
+      });
 
+      gtag('js', new Date());
       gtag('config', 'G-357FMT97ML');
     </script>
 
@@ -467,6 +473,12 @@
         // --- COOKIE WALL LOGIK ---
         function acceptCookies() {
             localStorage.setItem('bjornsWebbfix_cookies', 'accepted');
+            
+            // Uppdatera Google Analytics Consent till beviljad
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+            });
+
             hideCookieWall();
         }
 
