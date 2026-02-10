@@ -170,6 +170,30 @@
         .frame { background: var(--dark); border: 1px solid var(--gold); padding: 80px 40px; max-width: 90%; text-align: center; margin: 0 auto; }
         .frame h3 { font-size: clamp(1.5rem, 5vw, 3rem); font-weight: 100; letter-spacing: 8px; margin-bottom: 30px; text-transform: uppercase; }
 
+        /* --- PRIS-SEKTION --- */
+        .pricing-section { padding: 120px 10%; background: #050505; position: relative; }
+        .pricing-container { max-width: 1000px; margin: 0 auto; }
+        .pricing-card { 
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid rgba(197, 160, 89, 0.2); 
+            padding: 60px; 
+            text-align: left; 
+            position: relative;
+        }
+        .pricing-header { text-align: center; margin-bottom: 50px; }
+        .intro-price { font-size: 3.5rem; color: var(--gold); font-weight: 100; margin-bottom: 5px; }
+        .ord-price { color: #555; text-decoration: line-through; font-size: 1rem; letter-spacing: 1px; }
+        
+        .pricing-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; margin-top: 40px; }
+        .pricing-list-title { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+        .pricing-list { list-style: none; }
+        .pricing-list li { margin-bottom: 15px; color: #bbb; font-size: 0.95rem; display: flex; align-items: baseline; gap: 10px; }
+        .pricing-list li i { color: var(--gold); font-size: 0.8rem; }
+        
+        .hosting-box { background: rgba(0,0,0,0.3); padding: 30px; border: 1px solid rgba(255,255,255,0.05); height: fit-content; }
+        .hosting-box h4 { font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 15px; text-transform: uppercase; }
+        .hosting-box p { font-size: 0.85rem; color: #888; line-height: 1.6; }
+
         /* --- KONTAKT --- */
         .contact-container { padding: 100px 5%; max-width: 900px; margin: 0 auto; }
         .contact-form { background: #0a0a0a; padding: 40px; border: 1px solid rgba(255,255,255,0.05); }
@@ -257,6 +281,7 @@
             .nav-links a { margin-left: 20px; font-size: 10px; letter-spacing: 2px; }
             .info-section { grid-template-columns: 1fr; padding: 100px 5%; gap: 40px; text-align: center; }
             .grid-container { grid-template-columns: repeat(2, 1fr); padding: 60px 5%; }
+            .pricing-grid { grid-template-columns: 1fr; }
             .split { flex-direction: column; }
             .split-img { min-height: 350px; }
             .split-text { padding: 60px 30px; text-align: center; }
@@ -287,7 +312,9 @@
             .hero-content h1 { margin-top: 40px; }
             .grid-container { grid-template-columns: 1fr; }
             .card { padding: 40px 20px; }
-            .statement-section { background-attachment: scroll; } /* Bättre prestanda på mobil */
+            .pricing-card { padding: 40px 20px; }
+            .intro-price { font-size: 2.5rem; }
+            .statement-section { background-attachment: scroll; }
             .frame { padding: 40px 20px; }
             .contact-form { padding: 25px 15px; }
             .policy-section { padding: 60px 5%; }
@@ -303,6 +330,7 @@
         <div class="nav-links">
             <a href="#services">Design</a>
             <a href="#about">Idé</a>
+            <a href="#pricing">Priser</a>
             <a href="#privacy">Integritet</a> 
             <a href="#contact">Kontakt</a>
         </div>
@@ -345,6 +373,44 @@
             <i class="fas fa-layer-group" aria-hidden="true"></i>
             <h3>Responsivitet</h3>
             <p>Anpassning för mobiler, surfplattor och datorskärmar.</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section reveal">
+        <div class="pricing-container">
+            <h2 style="text-align: center; font-weight: 100; letter-spacing: 10px; margin-bottom: 60px; text-transform: uppercase;">Investering</h2>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <p style="letter-spacing: 2px; font-size: 0.8rem; color: #888; text-transform: uppercase; margin-bottom: 10px;">Lanseringserbjudande</p>
+                    <div class="intro-price">6 300 kr</div>
+                    <div class="ord-price">Planerat ordinarie pris: 9 500 kr</div>
+                </div>
+
+                <div class="pricing-grid">
+                    <div>
+                        <p class="pricing-list-title">Baspaket: Statisk Onepager</p>
+                        <ul class="pricing-list">
+                            <li><i class="fas fa-check"></i> Skräddarsydd design (godkänns av kund)</li>
+                            <li><i class="fas fa-check"></i> Professionell copy / reklamtext baserad på er verksamhet</li>
+                            <li><i class="fas fa-check"></i> Urval och optimering av era bilder</li>
+                            <li><i class="fas fa-check"></i> Integrerat kontaktformulär</li>
+                            <li><i class="fas fa-check"></i> "Hitta hit"-funktion med karta</li>
+                            <li><i class="fas fa-check"></i> Digital meny eller prislista</li>
+                            <li><i class="fas fa-check"></i> Sökmotorindexering (Google Search Console)</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <div class="hosting-box">
+                            <h4>Drift & Underhåll</h4>
+                            <p style="margin-bottom: 15px;"><strong>Årlig domänförnyelse:</strong> 500 kr/år</p>
+                            <p style="color: var(--gold); font-weight: 600;">Ingen månadsavgift.</p>
+                            <p style="margin-top: 10px;">Teknisk administration, hosting och mindre löpande ändringar (t.ex. byte av bild) ingår utan extra kostnad. Större omstruktureringar offereras separat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -473,12 +539,7 @@
         // --- COOKIE WALL LOGIK ---
         function acceptCookies() {
             localStorage.setItem('bjornsWebbfix_cookies', 'accepted');
-            
-            // Uppdatera Google Analytics Consent till beviljad
-            gtag('consent', 'update', {
-                'analytics_storage': 'granted'
-            });
-
+            gtag('consent', 'update', { 'analytics_storage': 'granted' });
             hideCookieWall();
         }
 
