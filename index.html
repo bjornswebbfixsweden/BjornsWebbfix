@@ -171,28 +171,43 @@
         .frame h3 { font-size: clamp(1.5rem, 5vw, 3rem); font-weight: 100; letter-spacing: 8px; margin-bottom: 30px; text-transform: uppercase; }
 
         /* --- PRIS-SEKTION --- */
-        .pricing-section { padding: 120px 10%; background: #050505; position: relative; }
-        .pricing-container { max-width: 1000px; margin: 0 auto; }
+        .pricing-section { padding: 120px 5%; background: #050505; position: relative; }
+        .pricing-container { max-width: 1200px; margin: 0 auto; }
+        
+        .pricing-wrapper { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+            margin-top: 40px;
+        }
+
         .pricing-card { 
             background: rgba(255,255,255,0.02); 
             border: 1px solid rgba(197, 160, 89, 0.2); 
-            padding: 60px; 
+            padding: 50px 40px; 
             text-align: left; 
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
-        .pricing-header { text-align: center; margin-bottom: 50px; }
-        .intro-price { font-size: 3.5rem; color: var(--gold); font-weight: 100; margin-bottom: 5px; }
-        .ord-price { color: #555; text-decoration: line-through; font-size: 1rem; letter-spacing: 1px; }
         
-        .pricing-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; margin-top: 40px; }
-        .pricing-list-title { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
-        .pricing-list { list-style: none; }
-        .pricing-list li { margin-bottom: 15px; color: #bbb; font-size: 0.95rem; display: flex; align-items: baseline; gap: 10px; }
+        .pricing-card.premium {
+            border: 1px solid var(--gold);
+            background: rgba(197, 160, 89, 0.03);
+        }
+
+        .pricing-header { text-align: center; margin-bottom: 40px; }
+        .intro-price { font-size: 3rem; color: var(--gold); font-weight: 100; margin-bottom: 5px; }
+        .ord-price { color: #555; text-decoration: line-through; font-size: 0.9rem; letter-spacing: 1px; }
+        
+        .pricing-list-title { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 10px; }
+        .pricing-list { list-style: none; margin-bottom: 30px; flex-grow: 1; }
+        .pricing-list li { margin-bottom: 15px; color: #bbb; font-size: 0.9rem; display: flex; align-items: baseline; gap: 10px; line-height: 1.4; }
         .pricing-list li i { color: var(--gold); font-size: 0.8rem; }
         
-        .hosting-box { background: rgba(0,0,0,0.3); padding: 30px; border: 1px solid rgba(255,255,255,0.05); height: fit-content; }
-        .hosting-box h4 { font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 15px; text-transform: uppercase; }
-        .hosting-box p { font-size: 0.85rem; color: #888; line-height: 1.6; }
+        .hosting-box { background: rgba(0,0,0,0.3); padding: 25px; border: 1px solid rgba(255,255,255,0.05); margin-top: 20px; }
+        .hosting-box h4 { font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; color: var(--white); }
+        .hosting-box p { font-size: 0.8rem; color: #777; line-height: 1.5; }
 
         /* --- KONTAKT --- */
         .contact-container { padding: 100px 5%; max-width: 900px; margin: 0 auto; }
@@ -281,7 +296,7 @@
             .nav-links a { margin-left: 20px; font-size: 10px; letter-spacing: 2px; }
             .info-section { grid-template-columns: 1fr; padding: 100px 5%; gap: 40px; text-align: center; }
             .grid-container { grid-template-columns: repeat(2, 1fr); padding: 60px 5%; }
-            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-wrapper { grid-template-columns: 1fr; }
             .split { flex-direction: column; }
             .split-img { min-height: 350px; }
             .split-text { padding: 60px 30px; text-align: center; }
@@ -380,34 +395,51 @@
         <div class="pricing-container">
             <h2 style="text-align: center; font-weight: 100; letter-spacing: 10px; margin-bottom: 60px; text-transform: uppercase;">Investering</h2>
             
-            <div class="pricing-card">
-                <div class="pricing-header">
-                    <p style="letter-spacing: 2px; font-size: 0.8rem; color: #888; text-transform: uppercase; margin-bottom: 10px;">Lanseringserbjudande</p>
-                    <div class="intro-price">6 300 kr</div>
-                    <div class="ord-price">Planerat ordinarie pris: 9 500 kr</div>
-                </div>
-
-                <div class="pricing-grid">
-                    <div>
-                        <p class="pricing-list-title">Baspaket: Statisk Onepager</p>
-                        <ul class="pricing-list">
-                            <li><i class="fas fa-check"></i> Skräddarsydd design (godkänns av kund)</li>
-                            <li><i class="fas fa-check"></i> Professionell copy / reklamtext baserad på er verksamhet</li>
-                            <li><i class="fas fa-check"></i> Urval och optimering av era bilder</li>
-                            <li><i class="fas fa-check"></i> Integrerat kontaktformulär</li>
-                            <li><i class="fas fa-check"></i> "Hitta hit"-funktion med karta</li>
-                            <li><i class="fas fa-check"></i> Digital meny eller prislista</li>
-                            <li><i class="fas fa-check"></i> Sökmotorindexering (Google Search Console)</li>
-                        </ul>
+            <div class="pricing-wrapper">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <p style="letter-spacing: 2px; font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 10px;">Lanseringserbjudande</p>
+                        <div class="intro-price">6 300 kr</div>
+                        <div class="ord-price">Planerat Ordinarie Pris: 9 500 kr</div>
                     </div>
                     
-                    <div>
-                        <div class="hosting-box">
-                            <h4>Drift & Underhåll</h4>
-                            <p style="margin-bottom: 15px;"><strong>Årlig domänförnyelse:</strong> 500 kr/år</p>
-                            <p style="color: var(--gold); font-weight: 600;">Ingen månadsavgift.</p>
-                            <p style="margin-top: 10px;">Teknisk administration, hosting och mindre löpande ändringar (t.ex. byte av bild) ingår utan extra kostnad. Större omstruktureringar offereras separat.</p>
-                        </div>
+                    <p class="pricing-list-title">Baspaket: Statisk Onepager</p>
+                    <ul class="pricing-list">
+                        <li><i class="fas fa-check"></i> Skräddarsydd design</li>
+                        <li><i class="fas fa-check"></i> Inskickat textunderlag integreras strategiskt i hemsidans layout</li>
+                        <li><i class="fas fa-check"></i> Urval och optimering av bilder</li>
+                        <li><i class="fas fa-check"></i> Integrerat kontaktformulär</li>
+                        <li><i class="fas fa-check"></i> "Hitta hit"-funktion med karta</li>
+                        <li><i class="fas fa-check"></i> Digital meny eller prislista</li>
+                        <li><i class="fas fa-check"></i> Sökmotorindexering</li>
+                    </ul>
+
+                    <div class="hosting-box">
+                        <h4>Drift & Underhåll</h4>
+                        <p>Årlig domän: 500 kr/år<br><strong>Ingen månadsavgift.</strong><br>Fri hosting och mindre ändringar ingår.</p>
+                    </div>
+                </div>
+
+                <div class="pricing-card premium">
+                    <div class="pricing-header">
+                        <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; margin-bottom: 10px;">Lanseringserbjudande</p>
+                        <div class="intro-price">8 500 kr</div>
+                        <div class="ord-price">Planerat Ordinarie Pris: 11 800 kr</div>
+                    </div>
+                    
+                    <p class="pricing-list-title">Premium-paket: Affärslösningen</p>
+                    <ul class="pricing-list">
+                        <li><i class="fas fa-plus"></i> <strong>Allt i Baspaketet ingår</strong></li>
+                        <li><i class="fas fa-check"></i> Upp till 4 undersidor</li>
+                        <li><i class="fas fa-check"></i> Foodora beställningslänk (restaurang)</li>
+                        <li><i class="fas fa-check"></i> Bokningssystem (verkstad/hantverkare mm)</li>
+                        <li><i class="fas fa-check"></i> Sektion för kundomdömen som speglar faktiska omdömen från extern(a) plattform(ar).</li>
+                        <li><i class="fas fa-check"></i> Rådata från ditt företag omvandlas till färdiga, välformulerade webbtexter.</li>
+                    </ul>
+
+                    <div class="hosting-box" style="border-color: rgba(197, 160, 89, 0.3);">
+                        <h4>Drift & Underhåll</h4>
+                        <p>Samma förmånliga villkor:<br>500 kr/år för domän.<br><strong>0 kr i månadsavgift.</strong></p>
                     </div>
                 </div>
             </div>
