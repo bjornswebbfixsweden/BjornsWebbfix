@@ -209,13 +209,33 @@
         .hosting-box h4 { font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; color: var(--white); }
         .hosting-box p { font-size: 0.8rem; color: #777; line-height: 1.5; }
 
-        /* --- KONTAKT --- */
+        /* --- KONTAKT (Uppdaterad design) --- */
         .contact-container { padding: 100px 5%; max-width: 900px; margin: 0 auto; }
-        .contact-form { background: #0a0a0a; padding: 40px; border: 1px solid rgba(255,255,255,0.05); }
+        
+        .contact-form { 
+            background: rgba(197, 160, 89, 0.02); 
+            padding: 50px; 
+            border: 1px solid var(--gold); 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            transition: var(--transition);
+        }
+
+        .contact-form:hover {
+            background: rgba(197, 160, 89, 0.04);
+            border-color: var(--white);
+        }
+
         .contact-form input, .contact-form textarea {
             width: 100%; padding: 15px; margin-bottom: 20px;
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.4); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white; font-family: 'Montserrat'; outline: none;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         .gdpr-info-text { 
@@ -242,6 +262,17 @@
             transition: 0.3s;
         }
         .submit-btn:hover { background: #fff; }
+
+        /* --- Ny stil för förfrågan-texten --- */
+        .request-title {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 30px;
+            letter-spacing: 6px;
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            font-weight: 300;
+            text-transform: uppercase;
+        }
 
         .policy-section { padding: 80px 10%; background: #070707; border-top: 1px solid rgba(255,255,255,0.05); }
         .policy-content { max-width: 800px; margin: 0 auto; color: #888; font-size: 0.9rem; line-height: 1.8; }
@@ -331,7 +362,7 @@
             .intro-price { font-size: 2.5rem; }
             .statement-section { background-attachment: scroll; }
             .frame { padding: 40px 20px; }
-            .contact-form { padding: 25px 15px; }
+            .contact-form { padding: 30px 20px; }
             .policy-section { padding: 60px 5%; }
             .contact-details { gap: 15px; }
             .contact-item { font-size: 0.8rem; }
@@ -416,7 +447,13 @@
 
                     <div class="hosting-box">
                         <h4>Drift & Underhåll</h4>
-                        <p>Årlig domän: 500 kr/år<br><strong>Ingen månadsavgift.</strong><br>Fri hosting och mindre ändringar ingår.</p>
+                        <p style="margin-bottom: 10px;">Teknisk förvaltning: Drift, hosting och domänförnyelse hanteras löpande med full rätt för kund att när som helst återta ägandeskap utan extra kostnad (bortsett från den faktiska administrativa avgiften för domänöverlämning på några hundralappar som debiteras av registraren vid tillfället).</p>
+                        <p>
+                            domänavgift + domänadministration 450 kr/år<br>
+                            ingen uppsägningstid<br>
+                            ingen bindningstid<br>
+                            ingen månadsavgift
+                        </p>
                     </div>
                 </div>
 
@@ -430,16 +467,23 @@
                     <p class="pricing-list-title">Premium-paket: Affärslösningen</p>
                     <ul class="pricing-list">
                         <li><i class="fas fa-plus"></i> <strong>Allt i Baspaketet ingår</strong></li>
+                        <li><i class="fas fa-check"></i> Rådata från ditt företag omvandlas till färdiga, välformulerade webbtexter.</li>
                         <li><i class="fas fa-check"></i> Upp till 4 undersidor</li>
                         <li><i class="fas fa-check"></i> Foodora beställningslänk (restaurang)</li>
                         <li><i class="fas fa-check"></i> Bokningssystem (verkstad/hantverkare mm)</li>
                         <li><i class="fas fa-check"></i> Sektion för kundomdömen som speglar faktiska omdömen från extern(a) plattform(ar).</li>
-                        <li><i class="fas fa-check"></i> Rådata från ditt företag omvandlas till färdiga, välformulerade webbtexter.</li>
+                        
                     </ul>
 
                     <div class="hosting-box" style="border-color: rgba(197, 160, 89, 0.3);">
                         <h4>Drift & Underhåll</h4>
-                        <p>Samma förmånliga villkor:<br>500 kr/år för domän.<br><strong>0 kr i månadsavgift.</strong></p>
+                        <p style="margin-bottom: 10px;">Teknisk förvaltning: Drift, hosting och domänförnyelse hanteras löpande med full rätt för kund att när som helst återta ägandeskap utan extra kostnad (bortsett från den faktiska administrativa avgiften för domänöverlämning på några hundralappar som debiteras av registraren vid tillfället).</p>
+                        <p>
+                            domänavgift + domänadministration 450 kr/år<br>
+                            ingen uppsägningstid<br>
+                            ingen bindningstid<br>
+                            ingen månadsavgift
+                        </p>
                     </div>
                 </div>
             </div>
@@ -449,7 +493,7 @@
     <div class="split reveal">
         <div class="split-img" style="background-image: url('digital-strategi-molndal.png');" role="img" aria-label="Digital strategi och webbanalys i Mölndal"></div>        
         <div class="split-text">
-            <h2 style="color: var(--gold);">Minimalism & Precision</h2>
+            <h2 style="color: var(--gold);">Precision</h2>
             <p>Genom att hålla koden lätt och ren underlättas kommunikationen mellan varumärket och dess besökare.</p>
         </div>
     </div>
@@ -484,7 +528,7 @@
             <a id="Setmore_button_iframe" class="submit-btn" href="https://bjornswebbfix.setmore.com">ÖPPNA BOKNINGSKALENDERN (DEMO)</a>
         </div>
 
-        <p style="text-align: center; color: #555; margin-bottom: 30px; letter-spacing: 2px; font-size: 0.8rem;">MEDDELANDEFÖRFRÅGAN</p>
+        <p class="request-title">Meddelandeförfrågan</p>
 
         <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
             <input type="hidden" name="access_key" value="2b9802f1-0384-4f60-bff3-3920fe37d88e">
@@ -602,7 +646,7 @@
                 setTimeout(() => {
                     bot.style.opacity = '1';
                     overlay.style.opacity = '1';
-                }, 10);
+                }, 100);
             }
         };
     </script>
