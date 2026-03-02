@@ -6,7 +6,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       
-      // Standardläge: Blockera spårning tills användaren godkänt
       gtag('consent', 'default', {
         'analytics_storage': 'denied',
         'ad_storage': 'denied'
@@ -122,6 +121,20 @@
         }
         .nav-links a:hover { color: var(--gold); }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            width: 30px;
+            height: 2px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+
         /* --- HERO --- */
         .hero { position: relative; height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
@@ -137,6 +150,25 @@
         
         .hero-content { position: relative; z-index: 3; text-align: center; max-width: 90%; padding: 0 20px; }
         .hero-content h1 { font-size: clamp(2.5rem, 8vw, 7rem); font-weight: 100; letter-spacing: clamp(10px, 3vw, 25px); text-transform: uppercase; margin-bottom: 20px; animation: fadeInUp 2s; }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            animation: fadeInUp 2.5s;
+        }
+        .hero-btn:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
 
         /* --- SCROLL REVEAL --- */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease; }
@@ -158,12 +190,41 @@
         .info-text p { font-weight: 300; color: #999; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; }
 
         .grid-container { padding: 80px 10%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .card { background: var(--glass); border: 1px solid rgba(255,255,255,0.03); padding: 60px 30px; text-align: center; transition: var(--transition); }
+        
+        .card { 
+            background: var(--glass); 
+            border: 1px solid rgba(255,255,255,0.03); 
+            padding: 60px 30px; 
+            text-align: center; 
+            transition: var(--transition); 
+            cursor: default;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            background: rgba(197, 160, 89, 0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
         .card i { font-size: 3rem; color: var(--gold); margin-bottom: 25px; }
         .card h3 { font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 3px; text-transform: uppercase; }
 
         .split { display: flex; min-height: 80vh; border-top: 1px solid rgba(255,255,255,0.05); }
-        .split-img { flex: 1.2; background-size: cover; background-position: center; min-height: 400px; }
+        
+        .split-img { 
+            flex: 1.2; 
+            background-size: cover; 
+            background-position: center; 
+            min-height: 400px; 
+            position: relative;
+        }
+        .split-img::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, rgba(197, 160, 89, 0.1), transparent);
+            pointer-events: none;
+        }
+
         .split-text { flex: 1; padding: 80px; display: flex; flex-direction: column; justify-content: center; background: #070707; }
 
         .statement-section { padding: 150px 0; background-image: url('bjorns-webbfix-background-dark.png'); background-attachment: fixed; background-size: cover; background-position: center; }
@@ -172,23 +233,24 @@
 
         /* --- PRIS-SEKTION --- */
         .pricing-section { padding: 120px 5%; background: #050505; position: relative; }
-        .pricing-container { max-width: 1200px; margin: 0 auto; }
+        .pricing-container { max-width: 1300px; margin: 0 auto; }
         
         .pricing-wrapper { 
             display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 30px; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
             margin-top: 40px;
         }
 
         .pricing-card { 
             background: rgba(255,255,255,0.02); 
             border: 1px solid rgba(197, 160, 89, 0.2); 
-            padding: 50px 40px; 
+            padding: 40px 30px; 
             text-align: left; 
             position: relative;
             display: flex;
             flex-direction: column;
+            transition: transform 0.4s ease;
         }
         
         .pricing-card.premium {
@@ -196,20 +258,38 @@
             background: rgba(197, 160, 89, 0.03);
         }
 
-        .pricing-header { text-align: center; margin-bottom: 40px; }
-        .intro-price { font-size: 3rem; color: var(--gold); font-weight: 100; margin-bottom: 5px; }
-        .ord-price { color: #555; text-decoration: line-through; font-size: 0.9rem; letter-spacing: 1px; }
+        .pricing-header { text-align: center; margin-bottom: 30px; }
+        .intro-price { font-size: 2.2rem; color: var(--gold); font-weight: 100; margin-bottom: 5px; }
+        .ord-price { color: #555; text-decoration: line-through; font-size: 0.8rem; letter-spacing: 1px; }
         
-        .pricing-list-title { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 10px; }
-        .pricing-list { list-style: none; margin-bottom: 30px; flex-grow: 1; }
-        .pricing-list li { margin-bottom: 15px; color: #bbb; font-size: 0.9rem; display: flex; align-items: baseline; gap: 10px; line-height: 1.4; }
-        .pricing-list li i { color: var(--gold); font-size: 0.8rem; }
-        
-        .hosting-box { background: rgba(0,0,0,0.3); padding: 25px; border: 1px solid rgba(255,255,255,0.05); margin-top: 20px; }
-        .hosting-box h4 { font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; color: var(--white); }
-        .hosting-box p { font-size: 0.8rem; color: #777; line-height: 1.5; }
+        .pricing-list-title { 
+            color: var(--gold); 
+            font-size: 0.85rem !important; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+            font-weight: 600; 
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3); 
+            padding-bottom: 10px;
+            background: rgba(197, 160, 89, 0.1);
+            padding: 10px;
+            border-left: 3px solid var(--gold);
+            margin-top: 10px;
+        }
+        .pricing-card.premium .pricing-list-title {
+            background: var(--gold);
+            color: var(--dark) !important;
+        }
 
-        /* --- KONTAKT (Uppdaterad design) --- */
+        .pricing-list { list-style: none; margin-bottom: 25px; flex-grow: 1; }
+        .pricing-list li { margin-bottom: 12px; color: #bbb; font-size: 0.85rem; display: flex; align-items: baseline; gap: 8px; line-height: 1.4; }
+        .pricing-list li i { color: var(--gold); font-size: 0.7rem; }
+        
+        .hosting-box { background: rgba(0,0,0,0.3); padding: 20px; border: 1px solid rgba(255,255,255,0.05); margin-top: 20px; }
+        .hosting-box h4 { font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; color: var(--white); }
+        .hosting-box p { font-size: 0.75rem; color: #777; line-height: 1.5; }
+
+        /* --- KONTAKT --- */
         .contact-container { padding: 100px 5%; max-width: 900px; margin: 0 auto; }
         
         .contact-form { 
@@ -263,7 +343,6 @@
         }
         .submit-btn:hover { background: #fff; }
 
-        /* --- Ny stil för förfrågan-texten --- */
         .request-title {
             text-align: center;
             color: var(--gold);
@@ -278,7 +357,7 @@
         .policy-content { max-width: 800px; margin: 0 auto; color: #888; font-size: 0.9rem; line-height: 1.8; }
         .policy-content h2 { color: var(--gold); font-size: 1.2rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
         .policy-list { list-style: none; margin-bottom: 20px; }
-        .policy-list li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .policy-list li { margin-bottom: 15px; padding-left: 20px; position: relative; }
         .policy-list li::before { content: '•'; color: var(--gold); position: absolute; left: 0; }
 
         footer { padding: 80px 20px; text-align: center; background: #030303; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -319,53 +398,37 @@
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- NY MOBIL- OCH SURFPLATTEANPASSNING --- */
-
-        /* Surfplattor (Tablets) */
         @media (max-width: 1024px) {
             nav { padding: 0 30px; height: 80px; }
-            .nav-links a { margin-left: 20px; font-size: 10px; letter-spacing: 2px; }
             .info-section { grid-template-columns: 1fr; padding: 100px 5%; gap: 40px; text-align: center; }
             .grid-container { grid-template-columns: repeat(2, 1fr); padding: 60px 5%; }
-            .pricing-wrapper { grid-template-columns: 1fr; }
             .split { flex-direction: column; }
             .split-img { min-height: 350px; }
             .split-text { padding: 60px 30px; text-align: center; }
         }
 
-        /* Mobiler (Phones) */
         @media (max-width: 768px) {
-            nav { 
-                height: auto; 
-                padding: 15px 10px; 
-                flex-direction: column; 
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+                background: var(--dark); flex-direction: column; justify-content: center;
+                transition: 0.5s;
             }
-            .nav-logo-img { height: 45px; margin-bottom: 10px; }
-            .nav-links { 
-                width: 100%; 
-                justify-content: center; 
-                gap: 5px; 
-                flex-wrap: wrap; 
-            }
-            .nav-links a { 
-                margin: 5px; 
-                font-size: 9px; 
-                letter-spacing: 1px; 
-                padding: 8px 12px;
-                background: rgba(255,255,255,0.03);
-                border: 1px solid rgba(255,255,255,0.05);
-            }
+            .nav-links.active { right: 0; }
+            .nav-links a { margin: 20px 0; font-size: 1.2rem; }
+            
+            nav { height: 80px; padding: 0 20px; }
+            .nav-logo-img { height: 45px; }
+            
             .hero-content h1 { margin-top: 40px; }
             .grid-container { grid-template-columns: 1fr; }
             .card { padding: 40px 20px; }
-            .pricing-card { padding: 40px 20px; }
-            .intro-price { font-size: 2.5rem; }
+            .pricing-card { padding: 30px 20px; }
+            .intro-price { font-size: 2rem; }
             .statement-section { background-attachment: scroll; }
             .frame { padding: 40px 20px; }
             .contact-form { padding: 30px 20px; }
             .policy-section { padding: 60px 5%; }
-            .contact-details { gap: 15px; }
-            .contact-item { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -373,12 +436,17 @@
 
     <nav aria-label="Huvudmeny">
         <a href="#" aria-label="Till startsidan"><img src="bjorns-webbfix-logotyp-guld.png" alt="Björns Webbyrå Logotyp - Professionell Webbdesign i Göteborg" class="nav-logo-img"></a>
-        <div class="nav-links">
-            <a href="#services">Design</a>
-            <a href="#about">Idé</a>
-            <a href="#pricing">Priser</a>
-            <a href="#privacy">Integritet</a> 
-            <a href="#contact">Kontakt</a>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#services" onclick="toggleMenu()">Design</a>
+            <a href="#about" onclick="toggleMenu()">Idé</a>
+            <a href="#pricing" onclick="toggleMenu()">Priser</a>
+            <a href="#privacy" onclick="toggleMenu()">Integritet</a> 
+            <a href="#contact" onclick="toggleMenu()">Kontakt</a>
         </div>
     </nav>
 
@@ -392,6 +460,7 @@
         <div class="hero-content">
             <h1>Coded Art</h1>
             <p style="color: #a9a9a9; font-weight: 800; font-size: 1.2rem; font-style: italic; letter-spacing: 3px; text-transform: uppercase;">Digital estetik skapad med precision</p>
+            <a href="#pricing" class="hero-btn">Se investering</a>
         </div>
     </header>
 
@@ -427,65 +496,100 @@
             <h2 style="text-align: center; font-weight: 100; letter-spacing: 10px; margin-bottom: 60px; text-transform: uppercase;">Investering</h2>
             
             <div class="pricing-wrapper">
+                
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <p style="letter-spacing: 2px; font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 10px;">Lanseringserbjudande</p>
+                        <p style="letter-spacing: 2px; font-size: 0.7rem; color: #888; text-transform: uppercase; margin-bottom: 10px;">Erbjudande</p>
                         <div class="intro-price">6 300 kr exkl moms</div>
                         <div class="ord-price">Planerat Ordinarie Pris: 10 500 kr exkl moms</div>
                     </div>
                     
-                    <p class="pricing-list-title">Baspaket: Statisk Onepager</p>
+                    <p class="pricing-list-title">Basic: Onepager</p>
                     <ul class="pricing-list">
-                        <li><i class="fas fa-check"></i> Skräddarsydd design</li>
-                        <li><i class="fas fa-check"></i> Inskickat textunderlag integreras strategiskt i hemsidans layout</li>
+                        <li><i class="fas fa-check"></i> 0 kr månadsavgift</li>
+                        <li><i class="fas fa-check"></i> Fri support</li>
+                        <li><i class="fas fa-check"></i> Anpassning för mobil & datorskärm</li>
+                        <li><i class="fas fa-check"></i> Snygg design som passar ditt företag (1 sida)</li>
+                        <li><i class="fas fa-check"></i> Du står för textproduktion, Björns Webbfix löser strategisk text-integrering</li>
                         <li><i class="fas fa-check"></i> Urval och optimering av bilder</li>
-                        <li><i class="fas fa-check"></i> Integrerat kontaktformulär</li>
-                        <li><i class="fas fa-check"></i> "Hitta hit"-funktion med karta</li>
-                        <li><i class="fas fa-check"></i> Digital meny eller prislista</li>
+                        <li><i class="fas fa-check"></i> Grundläggande SEO-text i koden</li>
                         <li><i class="fas fa-check"></i> Sökmotorindexering hos Google</li>
                     </ul>
 
                     <div class="hosting-box">
                         <h4>Drift & Underhåll</h4>
-                        <p style="margin-bottom: 10px;">Teknisk förvaltning: Drift, hosting och domänförnyelse hanteras löpande med full rätt för kund att när som helst återta ägandeskap utan extra kostnad (bortsett från den faktiska administrativa avgiften för domänöverlämning på några hundralappar som debiteras av registraren vid tillfället).</p>
+                        <p style="margin-bottom: 10px;">Teknisk förvaltning: Björns Webbfix tar det fulla funktionsansvaret för din webbplats gällande hosting, domänförvaltning, säkerställning av att tekniken fungerar samt hanterar domänförnyelsen. Som kund har du när som helst rätt att återta det fulla ägandeskapet och förvaltningen av domän och källkod utan extra arbetskostnad från Björns Webbfix*.
+
+*Eventuella externa administrativa avgifter från domänregistratorn för själva överlåtelsen (några hundralappar) debiteras vid överlämningstillfället.</p>
+                        <p>
+                            domänavgift + domänadministration 450 kr/år<br>                          
+                            ingen uppsägningstid | ingen bindningstid | ingen månadsavgift
+                             
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pricing-card" style="border: 1px solid rgba(197, 160, 89, 0.5);">
+                    <div class="pricing-header">
+                        <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; margin-bottom: 10px;">Erbjudande</p>
+                        <div class="intro-price">8 000 kr exkl moms</div>
+                        <div class="ord-price">Planerat Ordinarie Pris: 12 500 kr exkl moms</div>
+                    </div>
+                    
+                    <p class="pricing-list-title">Standard: Företaget</p>
+                    <ul class="pricing-list">
+                        <li><i class="fas fa-plus"></i> <strong>Allt i Basic ingår</strong></li>
+                        <li><i class="fas fa-check"></i> Upp till 3 undersidor</li>
+                        <li><i class="fas fa-check"></i> Kontaktformulär</li>
+                        <li><i class="fas fa-check"></i> Hitta-hit sektion med integrerad kartbild samt länk</li>
+                        <li><i class="fas fa-check"></i> Tydlig information om integritet gällande kontaktformulär för era besökare</li>
+
+                    </ul>
+
+                    <div class="hosting-box">
+                        <h4>Drift & Underhåll</h4>
+                        <p style="margin-bottom: 10px;">Teknisk förvaltning: Björns Webbfix tar det fulla funktionsansvaret för din webbplats gällande hosting, domänförvaltning, säkerställning av att tekniken fungerar samt hanterar domänförnyelsen. Som kund har du när som helst rätt att återta det fulla ägandeskapet och förvaltningen av domän och källkod utan extra arbetskostnad från Björns Webbfix*.
+
+*Eventuella externa administrativa avgifter från domänregistratorn för själva överlåtelsen (några hundralappar) debiteras vid överlämningstillfället.</p>
                         <p>
                             domänavgift + domänadministration 450 kr/år<br>
-                            ingen uppsägningstid<br>
-                            ingen bindningstid<br>
-                            ingen månadsavgift
+                            ingen uppsägningstid | ingen bindningstid | ingen månadsavgift
                         </p>
                     </div>
                 </div>
 
                 <div class="pricing-card premium">
                     <div class="pricing-header">
-                        <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; margin-bottom: 10px;">Lanseringserbjudande</p>
-                        <div class="intro-price">8 500 kr exkl moms</div>
-                        <div class="ord-price">Planerat Ordinarie Pris: 13 800 kr exkl moms</div>
+                        <p style="letter-spacing: 2px; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; margin-bottom: 10px;">Erbjudande</p>
+                        <div class="intro-price">10 900 kr exkl moms</div>
+                        <div class="ord-price">Planerat Ordinarie Pris: 15 200 kr exkl moms</div>
                     </div>
                     
-                    <p class="pricing-list-title">Premium-paket: Affärslösningen</p>
+                    <p class="pricing-list-title">Premium: Affärslösningen</p>
                     <ul class="pricing-list">
-                        <li><i class="fas fa-plus"></i> <strong>Allt i Baspaketet ingår</strong></li>
-                        <li><i class="fas fa-check"></i> Rådata från ditt företag omvandlas till färdiga, välformulerade webbtexter.</li>
-                        <li><i class="fas fa-check"></i> Upp till 4 undersidor</li>
-                        <li><i class="fas fa-check"></i> Foodora beställningslänk (restaurang)</li>
-                        <li><i class="fas fa-check"></i> Bokningssystem (verkstad/hantverkare mm)</li>
-                        <li><i class="fas fa-check"></i> Sektion för kundomdömen som speglar faktiska omdömen från extern(a) plattform(ar).</li>
-                        
+                        <li><i class="fas fa-plus"></i> <strong>Allt i Standard ingår</strong></li>
+                        <li><i class="fas fa-check"></i> Copy (textproduktion)</li>
+                        <li><i class="fas fa-check"></i> Upp till 5 undersidor</li>
+                        <li><i class="fas fa-check"></i> Bokningssystem (tex verkstad/hantverkare) eller Beställningslänkar (foodora, uber eats)</li>
+                        <li><i class="fas fa-check"></i> Sektion för kundomdömen</li>
+                        <li><i class="fas fa-check"></i> Dropdownmeny</li>
+                        <li><i class="fas fa-check"></i> Kort herovideo på landningssidan</li>
+                        <li><i class="fas fa-check"></i> Google analytics</li>
+                        <li><i class="fas fa-check"></i> Tydlig information om integritet gällande kontaktformulär, bokningssystem samt google analytics för era besökare</li>
                     </ul>
 
                     <div class="hosting-box" style="border-color: rgba(197, 160, 89, 0.3);">
                         <h4>Drift & Underhåll</h4>
-                        <p style="margin-bottom: 10px;">Teknisk förvaltning: Drift, hosting och domänförnyelse hanteras löpande med full rätt för kund att när som helst återta ägandeskap utan extra kostnad (bortsett från den faktiska administrativa avgiften för domänöverlämning på några hundralappar som debiteras av registraren vid tillfället).</p>
+                        <p style="margin-bottom: 10px;">Teknisk förvaltning: Björns Webbfix tar det fulla funktionsansvaret för din webbplats gällande hosting, domänförvaltning, säkerställning av att tekniken fungerar samt hanterar domänförnyelsen. Som kund har du när som helst rätt att återta det fulla ägandeskapet och förvaltningen av domän och källkod utan extra arbetskostnad från Björns Webbfix*.
+
+*Eventuella externa administrativa avgifter från domänregistratorn för själva överlåtelsen (några hundralappar) debiteras vid överlämningstillfället.</p>
                         <p>
                             domänavgift + domänadministration 450 kr/år<br>
-                            ingen uppsägningstid<br>
-                            ingen bindningstid<br>
-                            ingen månadsavgift
+                            ingen uppsägningstid | ingen bindningstid | ingen månadsavgift
                         </p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -518,12 +622,8 @@
         <h2 style="text-align: center; font-weight: 100; letter-spacing: 10px; margin-bottom: 40px; text-transform: uppercase;">Bokning & Kontakt</h2>
         
         <div style="margin-bottom: 50px; padding: 40px; border: 1px solid var(--gold); background: rgba(197, 160, 89, 0.05); text-align: center;">
-            <p style="color: var(--gold); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; font-weight: 600;">
-              
-            </p>
             <h3 style="letter-spacing: 3px; margin-bottom: 15px; font-weight: 300;">HITTAT EN PASSANDE TID?</h3>
-            <p style="color: #888; margin-bottom: 30px; font-size: 0.9rem; letter-spacing: 1px;">Konsultationer eller projektgenomgångar kan bokas direkt i schemat för att underlätta planeringen.</p>
-            
+            <p style="color: #888; margin-bottom: 30px; font-size: 0.9rem; letter-spacing: 1px;">Konsultationer eller projektgenomgångar kan bokas direkt i schemat.</p>
             <script id="setmore_script" type="text/javascript" src="https://assets.setmore.com/integration/static/setmoreIframeLive.js"></script>
             <a id="Setmore_button_iframe" class="submit-btn" href="https://bjornswebbfix.setmore.com">ÖPPNA BOKNINGSKALENDERN</a>
         </div>
@@ -535,11 +635,7 @@
             <input type="text" name="name" placeholder="NAMN" required>
             <input type="email" name="email" placeholder="E-POST" required>
             <textarea name="message" rows="5" placeholder="BESKRIVNING AV TANKAR ELLER PROJEKT" required></textarea>
-            
-            <p class="gdpr-info-text">
-                Vid sändning av meddelande behandlas personuppgifter av Björns Webbfix för att kunna besvara ärendet. Data skickas via tjänsten Web3Forms direkt till den e-post som hanterar kundärenden. Endast uppgifter som krävs för att assistera i ärendet sparas.
-            </p>
-
+            <p class="gdpr-info-text">Data behandlas av Björns Webbfix för att kunna besvara ärendet.</p>
             <button type="submit" class="submit-btn">Skicka förfrågan</button>
         </form>
     </section>
@@ -554,41 +650,38 @@
                 <li><strong>Bokningar:</strong> Tidsbokning sker via Setmore enligt gällande säkerhetsrutiner.</li>
                 <li><strong>Tredjepart:</strong> Web3Forms används för teknisk leverans av meddelanden. Ingen data säljs vidare till tredje part.</li>
                 <li><strong>Lagring:</strong> Korrespondens sparas så länge det krävs för att fullfölja samarbetet eller tills begäran om radering inkommer.</li>
+                <li><strong>Ansvarig för personuppgifter:</strong> Björns Webbfix (bjornswebbfix@gmail.com).</li>
             </ul>
-            <p>Ansvarig för personuppgifter: Björns Webbfix (bjornswebbfix@gmail.com).</p>
         </div>
     </section>
 
     <footer id="social-links"> 
-        <img src="bjorns-webbfix-logotyp-guld.png" alt="Björns Webbyrå Logotyp - Coded Artistry" class="footer-logo">
+        <img src="bjorns-webbfix-logotyp-guld.png" alt="Björns Webbyrå Logotyp" class="footer-logo">
         <div class="contact-details">
             <a href="https://www.instagram.com/bjornswebbfix" target="_blank" class="contact-item"><i class="fa-brands fa-instagram"></i> Instagram</a>
             <a href="mailto:bjornswebbfix@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> E-post</a>
             <a href="https://www.facebook.com/profile.php?id=61587249578615" target="_blank" class="contact-item"><i class="fa-brands fa-facebook"></i> Facebook</a>
         </div>
-        <div class="footer-content" style="margin-top: 40px;">
-            <p style="color: #444; font-size: 0.8rem;">&copy; 2026 Björns Webbfix. Alla rättigheter förbehållna.</p>
-            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px; color: #666;">
-                Hjälper företag med webbutveckling i <strong>Göteborg, Mölndal, Partille, Mölnlycke, Kungälv, Kungsbacka, Lerum och Borås</strong>.
-            </p>
-        </div>
+        <p style="color: #666; font-size: 0.8rem; margin-top: 40px;">&copy; 2026 Björns Webbfix. Alla rättigheter förbehållna.</p>
     </footer>
 
     <div id="cookie-overlay"></div>
     <div id="cookie-bot">
         <i class="fas fa-cookie-bite" style="color: var(--gold); font-size: 2.5rem; margin-bottom: 20px;"></i>
         <h4 style="letter-spacing: 4px; margin-bottom: 15px; font-size: 1.1rem; text-transform: uppercase;">Digital estetik & cookies</h4>
-        <p style="font-size: 0.85rem; color: #888; line-height: 1.8; margin-bottom: 30px;">
-            Denna webbplats använder cookies för trafikanalys och optimering av användarupplevelsen. Genom att acceptera tillåts insamling av anonymiserad data för att förbättra den digitala närvaron.
-        </p>
-        <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-            <button onclick="acceptCookies()" style="background: var(--gold); color: var(--dark); border: none; padding: 15px 40px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; width: 100%;">Acceptera cookies</button>
-            <button onclick="closeCookieBot()" style="background: transparent; color: #555; border: 1px solid #222; padding: 10px 30px; font-weight: 400; cursor: pointer; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px;">Endast nödvändiga</button>
+        <p style="font-size: 0.85rem; color: #888; line-height: 1.8; margin-bottom: 30px;">Används för trafikanalys och optimering.</p>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <button onclick="acceptCookies()" class="submit-btn" style="font-size: 0.8rem;">Acceptera cookies</button>
+            <button onclick="closeCookieBot()" style="background: transparent; color: #555; border: 1px solid #222; padding: 10px; cursor: pointer;">Endast nödvändiga</button>
         </div>
     </div>
 
     <script>
-        // --- HERO SLIDER ---
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
         const slides = document.querySelectorAll('.hero-slide');
         let currentSlide = 0;
         function nextSlide() {
@@ -598,7 +691,6 @@
         }
         setInterval(nextSlide, 6000);
 
-        // --- SCROLL REVEAL ---
         function reveal() {
             const reveals = document.querySelectorAll(".reveal");
             reveals.forEach(el => {
@@ -612,7 +704,6 @@
         window.addEventListener("scroll", reveal);
         reveal();
 
-        // --- COOKIE WALL LOGIK ---
         function acceptCookies() {
             localStorage.setItem('bjornsWebbfix_cookies', 'accepted');
             gtag('consent', 'update', { 'analytics_storage': 'granted' });
@@ -652,5 +743,3 @@
     </script>
 </body>
 </html>
-
-
