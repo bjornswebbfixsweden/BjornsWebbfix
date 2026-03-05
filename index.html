@@ -48,7 +48,7 @@
         "addressCountry": "SE"
       },
       "priceRange": "$$",
-      "foundingDate": "2026",
+      "foundingDate": "2025",
       "url": "https://bjornswebbfix.se"
     }
     </script>
@@ -372,7 +372,7 @@
             width: 100%; height: 100%;
             background: rgba(5, 5, 5, 0.98);
             backdrop-filter: blur(20px);
-            z-index: 9999;
+            z-index: 900;
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -389,7 +389,7 @@
             background: #0a0a0a; 
             border: 1px solid var(--gold); 
             padding: 50px 40px; 
-            z-index: 10000; 
+            z-index: 901; 
             text-align: center;
             box-shadow: 0 0 100px rgba(197, 160, 89, 0.1);
             opacity: 0;
@@ -506,14 +506,20 @@
                     
                     <p class="pricing-list-title">Basic: Onepager</p>
                     <ul class="pricing-list">
-                        <li><i class="fas fa-check"></i> 0 kr månadsavgift</li>
-                        <li><i class="fas fa-check"></i> Fri support</li>
+                        <li><i class="fas fa-check"></i> 0 kr månadsavgift</li>                    
                         <li><i class="fas fa-check"></i> Anpassning för mobil & datorskärm</li>
+                        <li><i class="fas fa-check"></i> Hosting ingår</li>
+                        <li><i class="fas fa-check"></i> Domänköp och koppling ingår, (årlig förnyelse kostar ca 200 kr om du själv hanterar domänen, 450 kr om Björns Webbfix ska sköta förnyelsen)</li>
                         <li><i class="fas fa-check"></i> Snygg design som passar ditt företag (1 sida)</li>
                         <li><i class="fas fa-check"></i> Du står för textproduktion, Björns Webbfix löser strategisk text-integrering</li>
                         <li><i class="fas fa-check"></i> Urval och optimering av bilder</li>
                         <li><i class="fas fa-check"></i> Grundläggande SEO-text i koden</li>
                         <li><i class="fas fa-check"></i> Sökmotorindexering hos Google</li>
+                        <li><i class="fas fa-check"></i> Fri support
+                        <li> Fri support omfattar: Teknisk hjälp om något mot förmodan slutar fungera, svar på frågor om din hosting. 
+                        <li>För hjälp med att uppdatera prislista, bilder osv ingår ca 90 min arbete/månad.
+
+                        <li>Fri support omfattar inte: Stora designändringar, helt nya sektioner eller veckovisa innehållsuppdateringar. För större löpande uppdateringar gäller timtaxa (250 kr/timmen).</li>
                     </ul>
 
                     <div class="hosting-box">
@@ -522,7 +528,7 @@
 
 *Eventuella externa administrativa avgifter från domänregistratorn för själva överlåtelsen (några hundralappar) debiteras vid överlämningstillfället.</p>
                         <p>
-                            domänavgift + domänadministration 450 kr/år<br>                          
+                            <br>                          
                             ingen uppsägningstid | ingen bindningstid | ingen månadsavgift
                              
                         </p>
@@ -552,7 +558,7 @@
 
 *Eventuella externa administrativa avgifter från domänregistratorn för själva överlåtelsen (några hundralappar) debiteras vid överlämningstillfället.</p>
                         <p>
-                            domänavgift + domänadministration 450 kr/år<br>
+                            <br>
                             ingen uppsägningstid | ingen bindningstid | ingen månadsavgift
                         </p>
                     </div>
@@ -584,7 +590,7 @@
 
 *Eventuella externa administrativa avgifter från domänregistratorn för själva överlåtelsen (några hundralappar) debiteras vid överlämningstillfället.</p>
                         <p>
-                            domänavgift + domänadministration 450 kr/år<br>
+                         <br>
                             ingen uppsägningstid | ingen bindningstid | ingen månadsavgift
                         </p>
                     </div>
@@ -728,18 +734,21 @@
         }
 
         window.onload = function() {
-            if (!localStorage.getItem('bjornsWebbfix_cookies')) {
-                const bot = document.getElementById('cookie-bot');
-                const overlay = document.getElementById('cookie-overlay');
-                bot.style.display = 'block';
-                overlay.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                setTimeout(() => {
-                    bot.style.opacity = '1';
-                    overlay.style.opacity = '1';
-                }, 100);
-            }
-        };
+    // Vi kollar om besökaren är en sökrobot
+    const isRobot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+    
+    if (!localStorage.getItem('bjornsWebbfix_cookies') && !isRobot) {
+        const bot = document.getElementById('cookie-bot');
+        const overlay = document.getElementById('cookie-overlay');
+        bot.style.display = 'block';
+        overlay.style.display = 'block';
+        // Vi tar bort låsningen av overflow för att vara snäll mot SEO
+        setTimeout(() => {
+            bot.style.opacity = '1';
+            overlay.style.opacity = '1';
+        }, 100);
+    }
+};
     </script>
 </body>
 </html>
