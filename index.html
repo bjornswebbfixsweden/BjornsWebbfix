@@ -23,7 +23,7 @@
     <link rel="canonical" href="https://bjornswebbfix.se/">
     <meta name="description" content="Behöver ditt företag en ny hemsida? Björns Webfix skapar snabba, mobilvänliga och sökmotoroptimerade webblösningar i Göteborgsområdet. Inga krångliga upplägg – bra resultat.">
     
-    <meta name="keywords" content="webbyrå, webbutveckling, webbdesign, hemsida företag, kodning, html5, css3, responsiv design, portfolio, webbyrå göteborg">
+<meta name="keywords" content="webbyrå göteborg, snabb hemsida företag göteborg, billig hemsida företag göteborg, hjälp med hemsida göteborg, nystartat företag hemsida pris, webbdesign göteborg, responsiv design">
     <meta name="author" content="Björns Webbyrå">
     <meta name="robots" content="index, follow"> 
     <meta property="og:title" content="Björns Webbyrå | Coded Artistry">
@@ -81,6 +81,23 @@
             color: var(--white); 
             overflow-x: hidden;
             width: 100%;
+        }
+
+/* --- FAQ KLICK-FUNKTION --- */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+.faq-answer.open {
+    max-height: 1000px; /* Vi sätter ett högt tak */
+    opacity: 1;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+}
+        .faq-item.active .arrow {
+            transform: rotate(180deg);
         }
 
         /* --- NAV --- */
@@ -430,7 +447,17 @@
             .contact-form { padding: 30px 20px; }
             .policy-section { padding: 60px 5%; }
         }
-    </style>
+/* Ser till att svaret faktiskt visas när vi klickar */
+.faq-answer.open {
+    max-height: 500px !important; /* Ger tillräckligt med plats för texten */
+    transition: max-height 0.5s ease-in;
+}
+
+/* Roterar pilen i din HTML */
+.faq-item.active .arrow {
+    transform: rotate(180deg);
+}
+</style>
 </head>
 <body>
 
@@ -446,7 +473,8 @@
             <a href="#about" onclick="toggleMenu()">Idé</a>
             <a href="#pricing" onclick="toggleMenu()">Priser</a>
             <a href="#privacy" onclick="toggleMenu()">Integritet</a> 
-            <a href="#contact" onclick="toggleMenu()">Kontakt</a>
+            <a href="#contact" onclick="toggleMenu()">Bokning & Kontakt</a>
+            <a href="#faq" onclick="toggleMenu()">Vanliga frågor</a>
         </div>
     </nav>
 
@@ -458,7 +486,7 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Coded Art</h1>
+            <h1>Webbyrå i Göteborg</h1>
             <p style="color: #a9a9a9; font-weight: 800; font-size: 1.2rem; font-style: italic; letter-spacing: 3px; text-transform: uppercase;">Digital estetik skapad med precision</p>
             <a href="#pricing" class="hero-btn">Se investering</a>
         </div>
@@ -468,7 +496,7 @@
         <div class="info-img"><img src="responsiv-webbfix-goteborg.png" alt="Modern och responsiv webbyrå i Göteborg - Björns Webbfix" loading="lazy"></div>
         <div class="info-text">
             <h2>Webbyrå i Göteborg – med fokus på estetik</h2>
-            <p>Söks en professionell <strong>webbyrå i Göteborg</strong>? Här skapas digitala lösningar där prestanda möter elegans. Björns Webbfix bistår lokala företag i arbetet med att synas genom moderna, snabba och responsiva hemsidor.</p>
+            <p>Sökes en professionell <strong>webbyrå i Göteborg</strong>? Här skapas digitala lösningar där prestanda möter elegans. Björns Webbfix bistår lokala företag i arbetet med att synas genom moderna, snabba och responsiva hemsidor.</p>
             <p style="color: var(--gold); letter-spacing: 2px; font-weight: 600; font-size: 0.9rem;">EN LOKAL PARTNER I GÖTEBORG</p>
         </div>
     </section>
@@ -660,7 +688,89 @@
             </ul>
         </div>
     </section>
+<section id="faq" class="reveal" style="padding: 60px 20px; max-width: 800px; margin: 0 auto;">
+    <h2 style="text-align: center; color: var(--gold); margin-bottom: 40px;">Vanliga frågor</h2>
+    
+    <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 class="faq-question" style="font-size: 1.1rem; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+            Vad kostar en billig hemsida för företag i Göteborg?
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </h3>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <p style="color: #888; font-size: 0.9rem; padding-bottom: 20px;"><a href="#pricing" style="color: var(--gold); text-decoration: underline;">Priset</a> varierar beroende på funktioner, men för ett nystartat företag kan en bra hemsida och ett bra pris vara viktigt. Jag erbjuder en billig hemsida för företag i Göteborg som fungerar, utan dolda avgifter.</p>
+        </div>
+    </div>
 
+    <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 class="faq-question" style="font-size: 1.1rem; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+            Erbjuder du hjälp med hemsida i Göteborg för befintliga projekt?
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </h3>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <p style="color: #888; font-size: 0.9rem; padding-bottom: 20px;">Ja, jag hjälper både med helt nya sajter och ger teknisk hjälp med hemsida i Göteborg för projekt som behöver uppdateras, snyggas till eller optimeras för bättre resultat.</p>
+        </div>
+    </div>
+
+    <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 class="faq-question" style="font-size: 1.1rem; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+            Hur snabbt kan jag få min nya hemsida levererad?
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </h3>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <p style="color: #888; font-size: 0.9rem; padding-bottom: 20px;">Jag specialiserar mig på <a href="#services" style="color: var(--gold); text-decoration: underline;">snabba hemsidor för företag</a>. En standardlösning kan ofta vara klar inom 1–2 veckor, så att du kan börja synas och locka kunder så snart som möjligt.</p>
+        </div>
+    </div>
+
+    <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 class="faq-question" style="font-size: 1.1rem; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+            Är hemsidan anpassad för mobiler och SEO?
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </h3>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <p style="color: #888; font-size: 0.9rem; padding-bottom: 20px;">Självklart. Alla mina lösningar är responsiva och sökmotoroptimerade. Detta är extra viktigt för ett nystartat företag där hemsida och pris ska inkludera synlighet på både Google och mobila enheter.</p>
+        </div>
+    </div>
+
+    <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 class="faq-question" style="font-size: 1.1rem; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+            Varför välja Björns Webbfix som din webbyrå i Göteborg?
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </h3>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <p style="color: #888; font-size: 0.9rem; padding-bottom: 20px;">Jag kombinerar digital estetik med teknisk funktion. Mitt mål är att erbjuda hjälp med <a href="#about" style="color: var(--gold); text-decoration: underline;">hemsida i Göteborg</a> för små och medelstora företag som vill växa online.</p>
+        </div>
+    </div>
+
+    <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 class="faq-question" style="font-size: 1.1rem; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+            Letar du efter en personlig webbyrå i Göteborg?
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </h3>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <p style="color: #888; font-size: 0.9rem; padding-bottom: 20px;">Som en personlig webbyrå i Göteborg jobbar jag nära mina kunder för att skapa unika lösningar som verkligen representerar deras varumärke.</p>
+        </div>
+    </div>
+
+    <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 class="faq-question" style="font-size: 1.1rem; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+            Finns det en billig och seriös webbyrå för småföretag?
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </h3>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <p style="color: #888; font-size: 0.9rem; padding-bottom: 20px;">Ja, Björns Webbfix fungerar som en billig webbyrå för småföretag i regionen. Vi erbjuder kvalitet till ett pris som passar mindre budgetar. Du kan lätt kontakta oss <a href="#contact" style="color: var(--gold); text-decoration: underline;">här</a></p>
+        </div>
+    </div>
+
+    <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid #333;">
+        <h3 class="faq-question" style="font-size: 1.1rem; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+            Vad erbjuder ni som webbyrå i Göteborg för nystartade?
+            <span class="arrow" style="transition: transform 0.3s;">▼</span>
+        </h3>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <p style="color: #888; font-size: 0.9rem; padding-bottom: 20px;">Jag har tagit fram ett koncept som fungerar som en dedikerad webbyrå i Göteborg för nystartade. Björns Webbfix fokuserar på det viktigaste först så att du snabbt kommer ut på marknaden.</p>
+        </div>
+    </div>
+</section>
     <footer id="social-links"> 
         <img src="bjorns-webbfix-logotyp-guld.png" alt="Björns Webbyrå Logotyp" class="footer-logo">
         <div class="contact-details">
@@ -681,7 +791,36 @@
             <button onclick="closeCookieBot()" style="background: transparent; color: #555; border: 1px solid #222; padding: 10px; cursor: pointer;">Endast nödvändiga</button>
         </div>
     </div>
+<script>
+    // FAQ Logik - Väntar på att sidan laddats helt
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = answer.classList.contains('open');
 
+    // Stäng alla andra först
+    document.querySelectorAll('.faq-answer').forEach(el => {
+        el.style.maxHeight = null; // Nollställ höjden
+        el.classList.remove('open');
+    });
+    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+
+    // Om den inte var öppen -> öppna den med exakt höjd
+    if (!isOpen) {
+        answer.classList.add('open');
+        item.classList.add('active');
+        // Detta gör att animationen blir mjuk oavsett textmängd
+        answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+});
+        });
+    });
+</script>
     <script>
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
